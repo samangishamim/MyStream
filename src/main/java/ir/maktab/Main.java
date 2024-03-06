@@ -25,4 +25,11 @@ public class Main {
                 .sorted(Comparator.comparing(Person::getUsername))
                 .collect(Collectors.toList());
     }
+
+    private static List<Person> sortPeopleByAgeAndLastName(List<Person> people) {
+        return people.stream()
+                .sorted(Comparator.comparing(Person::getAge)
+                        .thenComparing(person -> person.getUsername().split("\\.")[1]))
+                .collect(Collectors.toList());
+    }
 }
