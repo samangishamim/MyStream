@@ -7,6 +7,7 @@ import ir.maktab.model.PersonSummary;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -31,5 +32,11 @@ public class Main {
                 .sorted(Comparator.comparing(Person::getAge)
                         .thenComparing(person -> person.getUsername().split("\\.")[1]))
                 .collect(Collectors.toList());
+    }
+
+    private static Set<String> extractIpv4FromPeople(List<Person> people) {
+        return people.stream()
+                .map(Person::getIpv4)
+                .collect(Collectors.toSet());
     }
 }
