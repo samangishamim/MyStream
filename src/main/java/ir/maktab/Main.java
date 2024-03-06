@@ -7,6 +7,7 @@ import ir.maktab.model.PersonSummary;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,5 +39,14 @@ public class Main {
         return people.stream()
                 .map(Person::getIpv4)
                 .collect(Collectors.toSet());
+    }
+
+    private static Map<String, Person> filterAndMapPeople(List<Person> people) {
+        return people.stream()
+                .sorted(Comparator.comparing(Person::getUsername))
+                .filter(person -> person.getAge() > 40 && !person.getUsername().startsWith("A"))
+                .skip(5)
+                .limit(100)
+                .collect(Collectors.toMap(person -> person.getUsername(), person -> person));
     }
 }
