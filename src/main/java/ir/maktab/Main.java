@@ -108,13 +108,14 @@ public class Main {
 
         Set<String> ipv4Set = people.stream()
 
-//                .map(Person::getIpv4)
+                .map(Person::getIpv4)
 
-                .map(person -> person.getIpv4())
                 .collect(Collectors.toSet());
 
-
-        System.out.println(ipv4Set);
+//        System.out.println(ipv4Set);
+        for (String s : ipv4Set) {
+            System.out.println(s);
+        }
 
     }
 
