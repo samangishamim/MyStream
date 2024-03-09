@@ -36,12 +36,12 @@ public class Main {
 
         // B-4
 
-        main.getIpv4Set(people);
+//        main.getIpv4Set(people);
 
 
         // B-5
 
-//        main.getNameToPersonMap(people);
+        main.getNameToPersonMap(people);
 
 
         // B-6
@@ -99,7 +99,7 @@ public class Main {
 
 //        System.out.println(sortedByAgeAndLastName);
         for (Person person : sortedByAgeAndLastName) {
-            System.out.println(person.getAge()+ " " +person.getLastName() );
+            System.out.println(person.getAge() + " " + person.getLastName());
         }
     }
 
@@ -126,17 +126,25 @@ public class Main {
 
                 .sorted(Comparator.comparing(Person::getLastName))
 
-                .filter(person -> person.getGender().equals("F") && person.getAge() > 40)
+                .filter(person -> (person.getGender().equals("Female") && person.getAge() <= 40) ||
+                        person.getGender().equals("Male"))
+
+                .sorted(Comparator.comparing(Person::getFirstName))
+
+                .dropWhile(person -> person.getFirstName().startsWith("A"))
 
                 .skip(5)
 
                 .limit(100)
 
-                .collect(Collectors.toMap(person -> person.getFirstName() + " " + person.getLastName(), person -> person));
+                .collect(Collectors.toMap(person -> person.getId() + person.getFirstName() +
+                        person.getLastName(), person -> person));
 
 
-        System.out.println(nameToPerson);
+//        System.out.println(nameToPerson);
 
+        System.out.println(nameToPerson.size());
+        System.out.println(nameToPerson.keySet());
     }
 
 
