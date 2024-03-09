@@ -47,11 +47,6 @@ public class Main {
 
         main.getCorrectedPeople(people);
 
-
-        // B-7
-
-//        main.getAverageAgeOfMen(people);
-
     }
 
 
@@ -212,35 +207,4 @@ public class Main {
         Date date1 = java.sql.Date.valueOf(date);
         return date1;
     }
-
-//    public void getAverageAgeOfMen(List<Person> people) {
-//
-//        List<Person> filteredPeople = people.stream()
-//
-//                .filter(person -> person.getAge() <= 50)
-//
-//                .toList();
-//
-//
-//        List<PersonSummary> correctedPeople = filteredPeople.stream()
-//
-//                .map(PersonSummary::new)
-//
-//                .toList();
-//
-//
-//        double averageAge = correctedPeople.stream()
-//
-//                .filter(person -> person.getGender().equals("F"))
-//
-//                .mapToInt(PersonSummary::getAge)
-//
-//                .average()
-//
-//                .orElse(0);
-//
-//
-//        System.out.println("Average age of female: " + averageAge);
-//
-//    }
 }
